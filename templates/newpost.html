@@ -3,9 +3,11 @@
 
 <h1>Add a Blog Post</h1>
 <form action="/newpost" method="POST">
+    <p>Title</p>
     <input type="text" name="title" value="{{ title_val }}" />
     <span class="error" for="title">{{ title_error }}</span>
     <br>
+    <p>Blog:</p>
     <textarea name="content">{{ content_val }}</textarea>
     <span class="error" for="content">{{ content_error }}</span>
     <br>

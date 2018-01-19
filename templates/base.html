@@ -6,14 +6,50 @@
             .error {
                 color: red;
             }
+            #logout {
+                display: inline-block;
+                float: right;
+            }
+            header {
+                width: 100%;
+                display: inline-block;
+                background-color: gray;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            .header_link {
+                text-decoration: none;
+                padding: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                background-color: aquamarine;
+                color: black;
+            }
+            .author {
+                float: right;
+                display: inline;
+            }
         </style>
     </head>
     <body>
+        
         <header>
-            <a href="/blog">Main Page</a>
-            <a href="/newpost">Add a Blog Post</a>
+            <a class='header_link' href="/">Home</a>
+            <a class='header_link' href="/blog">All Blogs</a>
+            <a class='header_link' href="/newpost">Add a Blog Post</a>
+            <div id="logout">
+                <a class='header_link' href='/logout'>Log Out</a>
+            </div>
         </header>
-
+    
+        {% with messages = get_flashed_messages(with_categories=True) %}
+           <ul>
+           {% for category,message in messages %}
+                <li class="{{category}}">{{message}}</li>
+           {% endfor %}
+           </ul>
+        {% endwith %}
+        
         {% block content %}
         {% endblock %}
 
